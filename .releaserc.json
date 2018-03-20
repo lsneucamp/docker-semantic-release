@@ -1,0 +1,35 @@
+{
+  "tagFormat": "${version}",
+  "verifyConditions": [
+    "@semantic-release/git"
+  ],
+  "analyzeCommits": [
+    "@semantic-release/commit-analyzer"
+  ],
+  "generateNotes": [
+    {
+      "path": "@semantic-release/release-notes-generator",
+      "preset": "angular",
+      "writerOpts": {
+        "headerPartial": "<a name=\"{{version}}\"></a>\n{{#if isPatch~}}\n  ##\n{{~else~}}\n  #\n{{~/if}}\n{{#if @root.linkCompare~}}\n  [{{version}}](\n  {{~#if @root.repository~}}\n    {{~#if @root.host}}\n      {{~@root.host}}/\n    {{~/if}}\n    {{~#if @root.owner}}\n      {{~@root.owner}}/\n    {{~/if}}\n    {{~@root.repository}}\n  {{~else}}\n    {{~@root.repoUrl}}\n  {{~/if~}}\n  /branches/compare/{{previousTag}}..{{currentTag}})\n{{~else}}\n  {{~version}}\n{{~/if}}\n{{~#if title}} \"{{title}}\"\n{{~/if}}\n{{~#if date}} ({{date}})\n{{/if}}"
+      }
+    }
+  ],
+  "prepare": [
+    "@semantic-release/changelog",
+    {
+      "path": "@semantic-release/git",
+      "assets": [
+        "CHANGELOG.md"
+      ],
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "echo ${nextRelease.version} > .next-version"
+    }
+  ],
+  "publish": [],
+  "success": [],
+  "fail": []
+}
