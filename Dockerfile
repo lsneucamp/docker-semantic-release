@@ -1,9 +1,7 @@
 FROM node:9-alpine
 
-ENV CI=true
-
 RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh
+    apk add --no-cache bash git openssh sed jq
 
 RUN npm i -g \
         semantic-release \
@@ -16,4 +14,4 @@ RUN mkdir /repo
 
 WORKDIR /repo
 
-ENTRYPOINT ["semantic-release"]
+CMD ["semantic-release"]
