@@ -1,4 +1,6 @@
-FROM lsneucamp/docker-semantic-release:1.0.1
+FROM lsneucamp/docker-semantic-release:1.2.0
+
+USER root
 
 ENV LANG C.UTF-8
 
@@ -40,5 +42,7 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
+
+USER node
 
 CMD ["semantic-release"]

@@ -14,4 +14,6 @@ RUN mkdir /repo
 
 WORKDIR /repo
 
+USER node
+
 CMD ["semantic-release"]
