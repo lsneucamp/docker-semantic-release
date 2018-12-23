@@ -5,7 +5,7 @@
     {
       "name": "dev",
       "prerelease": "prerelease",
-      "channel": "next",
+      "channel": "next"
     }
   ],
   "verifyConditions": [
