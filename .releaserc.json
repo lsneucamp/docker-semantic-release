@@ -1,4 +1,13 @@
 {
+  "tagFormat": "${version}",
+  "branches": [
+    "master",
+    {
+      "name": "dev",
+      "prerelease": "prerelease",
+      "channel": "next",
+    }
+  ],
   "verifyConditions": [
     "@semantic-release/git"
   ],
