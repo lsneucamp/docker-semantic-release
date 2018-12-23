@@ -1,5 +1,4 @@
 {
-  "tagFormat": "${version}",
   "verifyConditions": [
     "@semantic-release/git"
   ],
